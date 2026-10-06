@@ -35,5 +35,5 @@ INDICATORS = (
 RISK_THRESHOLDS = {"low": 0.35, "medium": 0.65}
 
 EXTERNAL_DATASET = "dbarbedillo/SMS_Spam_Multilingual_Collection_Dataset"
-NCRB_URL = "https://s cybercrime.gov.in/"
+NCRB_URL = "https://cybercrime.gov.in/"
 CYBER_HELPLINE = "1930"
