@@ -117,16 +117,25 @@ warning that cannot be audited is not usable in a public-safety context.
 
 ## Quickstart
 
+**Windows (PowerShell 5.1 — note: no `&&` support)** — one command does everything:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\bootstrap.ps1
+```
+
+Or run the steps separately:
+
+```powershell
+python -m src.data.build_dataset
+python -m src.data.fetch_public       # ~30s, needs internet
+python -m src.evaluate
+streamlit run app.py                   # then open http://localhost:8501
+```
+
+**macOS / Linux / bash:**
+
 ```bash
-git clone https://github.com/H8rsh100/Resonance.git
-cd Resonance
-pip install -r requirements.txt
-
-python -m src.data.build_dataset     # build the labelled corpus
-python -m src.data.fetch_public      # download the public cross-domain corpus (~30s)
-python -m src.evaluate               # train, evaluate, write reports/ + figures
-
-streamlit run app.py                 # launch the demo
+./bootstrap.sh
 ```
 
 Everything except `artifacts/` and `data/processed|external/` is committed, so a clean
