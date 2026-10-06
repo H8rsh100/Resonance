@@ -76,9 +76,9 @@ def metrics(y: np.ndarray, pred: np.ndarray, p: np.ndarray | None = None) -> dic
     return out
 
 
-def fmt(d: dict) -> str:
+def fmt(d: dict, label: str = "") -> str:
     auc = d.get("auc", float("nan"))
-    return (f"| {d['accuracy']:.3f} | {d['precision']:.3f} | {d['recall']:.3f} | "
+    return (f"| {label} | {d['accuracy']:.3f} | {d['precision']:.3f} | {d['recall']:.3f} | "
             f"{d['f1']:.3f} | {auc:.3f} | **{d['fpr']:.3f}** | {d['support']} |")
 
 
@@ -306,7 +306,7 @@ def write_report(m, per_lang, abl, thr, tuned, xd, lang_acc, df, overlap, frame)
         "![roc](figures/roc_curve.png)\n\n"
         "## 2. Per-language breakdown\n\n"
         "| Language | Accuracy | Precision | Recall | F1 | AUC | FPR | n |\n|---|---|---|---|---|---|---|---|\n"
-        + "".join(fmt(r) + "\n" for _, r in per_lang.iterrows())
+        + "".join(fmt(r, r["language"]) + "\n" for _, r in per_lang.iterrows())
         + f"\nCoarse language identification accuracy across the corpus: **{lang_acc:.1%}**\n\n"
         "![per language](figures/per_language.png)\n\n"
         "## 3. Ablation\n\n"
@@ -335,7 +335,7 @@ def write_report(m, per_lang, abl, thr, tuned, xd, lang_acc, df, overlap, frame)
                      f"Training rows: {blob['n_train']}  |  Test rows: {blob['overall']['support']}\n\n"
                      + hdr + fmt(blob["overall"]) + "\n\n"
                      "| Language | Accuracy | Precision | Recall | F1 | AUC | FPR | n |\n|---|---|---|---|---|---|---|---|\n"
-                     + "".join(fmt(r) + "\n" for _, r in blob["per_language"].iterrows()) + "\n")
+                     + "".join(fmt(r, r["language"]) + "\n" for _, r in blob["per_language"].iterrows()) + "\n")
         o = xd["domain_shift_only"]["overall"]
         body += (
             "**Read this honestly.** A model trained only on short templated call\n"
