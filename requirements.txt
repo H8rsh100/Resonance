@@ -1,0 +1,29 @@
+# Resonance - AI for Digital Public Safety
+# Digital Arrest Scam Detection & Citizen Fraud Shield
+# Python 3.12
+
+# --- core (Phase 1) ---
+numpy==1.26.4
+pandas==3.0.3
+scipy==1.17.1
+scikit-learn==1.6.0
+joblib==1.5.3
+matplotlib==3.9.3
+seaborn==0.13.2
+
+# --- app ---
+streamlit==1.56.0
+
+# --- Phase 2 (week 2) ---
+torch==2.5.1
+transformers==4.47.1
+datasets==3.2.0
+accelerate
+sentencepiece
+
+# --- Phase 2 audio branch (owned by member 39) ---
+librosa
+soundfile
+
+# --- optional: IndicBERT fine-tuning (owned by member 36) ---
+xgboost==3.3.0

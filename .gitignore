@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# generated artifacts (rebuild with: python -m src.train)
+data/processed/
+data/external/
+artifacts/
+*.joblib
+*.pkl
+
+# keep the figures, they are committed on purpose for the report
+!reports/figures/*.png
+
+.streamlit/secrets.toml
+.env
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
